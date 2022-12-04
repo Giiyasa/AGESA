@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelChangerSecond : MonoBehaviour
+public class Transition : MonoBehaviour
 {
     public Animator animator;
     public float transitionDelayTime = 1.0f;
 
     void Awake()
     {
-        animator = GameObject.Find("Black fade").GetComponent<Animator>();
+        animator = GameObject.Find("Transition").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -32,8 +32,8 @@ public class LevelChangerSecond : MonoBehaviour
 
     IEnumerator DelayLoadLevel(int index)
     {
-        animator.SetTrigger("FadeOut");
+        animator.SetTrigger("TriggerTransition");
         yield return new WaitForSeconds(transitionDelayTime);
-         SceneManager.LoadScene("2.Second", LoadSceneMode.Additive);
+        SceneManager.LoadScene(index);
     }
 }

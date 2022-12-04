@@ -1,27 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelChangerScript : MonoBehaviour
+public class LevelChangeScript : MonoBehaviour
 {
-  
-  public Animator animator;
-  private int levelToLoad;
+    public Animator animator;
+    public float transitionDelayTime = 1.0f;
 
-    void Update() {
-        if (Input.GetMouseButtonDown(0))
-      {
-        FadeToLevel(1);
-      }  
-        
-    }
-    public void FadeToLevel (int levelIndex) 
+    void Awake()
     {
-        animator.SetTrigger ("FadeOut");
-
+        animator = GameObject.Find("Black fade").GetComponent<Animator>();
     }
 
-    public void  OnFadeComplete ()
+    // Update is called once per frame
+    void Update()
     {
-       SceneManager.LoadScene("3.Home", LoadSceneMode.Additive);
+        //As an example, we'll be using GetKey() to test out the transition
+        //between game scenes, so if you are implementing this with this code
+        //make sure to modify the code according to your needs.
+        if(Input.GetKey(KeyCode.Space))
+        {
+            LoadLevel();
+        }
+    }
+
+    public void LoadLevel()
+    {
+        StartCoroutine(DelayLoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+
+    IEnumerator DelayLoadLevel(int index)
+    {
+        animator.SetTrigger("FadeOut");
+        yield return new WaitForSeconds(transitionDelayTime);
+        SceneManager.LoadScene(index);
     }
 }
