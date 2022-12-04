@@ -12,9 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/2.Second.unity
     guid: c8c1adf2aeaec234189b272ded98f8cb
   - enabled: 1
-    path: Assets/Scenes/3.Home.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/home.unity
+    guid: cc67e61755756184585edad2b53c79e9
   - enabled: 1
     path: Assets/Scenes/Tentang.unity
     guid: 3ddcacf88f1ae42429951fbac760b143
+  - enabled: 1
+    path: Assets/Scenes/Permainan.unity
+    guid: 864e120d818bfd248b63049ee9d64934
+  - enabled: 1
+    path: Assets/Scenes/Bantuan.unity
+    guid: 3a63d8f778198cc43b8d760847a73460
   m_configObjects: {}
